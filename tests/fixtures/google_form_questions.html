@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Clinical Study Data Collection - UAT Demo</title></head>
+<body>
+  <div role="listitem">
+    <div role="heading" aria-level="3" aria-required="true">Subject ID</div>
+    <input role="textbox" type="text" aria-label="Subject ID" aria-required="true">
+  </div>
+  <div role="listitem">
+    <div role="heading" aria-level="3">Age *</div>
+    <input role="textbox" type="text" aria-label="Age">
+  </div>
+  <div role="listitem">
+    <div role="heading" aria-level="3">Gender</div>
+    <div role="listbox" aria-label="Gender">
+      <div role="option">Male</div>
+      <div role="option">Female</div>
+      <div role="option">Not Reported</div>
+    </div>
+  </div>
+  <div role="listitem">
+    <div role="heading" aria-level="3">Informed Consent</div>
+    <div role="radiogroup" aria-label="Informed Consent">
+      <div role="radio" aria-label="Yes" data-value="Yes"></div>
+      <div role="radio" aria-label="No" data-value="No"></div>
+    </div>
+  </div>
+  <div role="listitem">
+    <div role="heading" aria-level="3">Screening Date</div>
+    <input role="textbox" type="text" aria-label="Month">
+    <input role="textbox" type="text" aria-label="Day">
+    <input role="textbox" type="text" aria-label="Year">
+  </div>
+  <div role="listitem">
+    <input type="file">
+  </div>
+</body>
+</html>

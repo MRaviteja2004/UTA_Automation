@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Clinical EDC UAT Demo Form</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2rem auto;
+      max-width: 40rem;
+      color: #1f2933;
+    }
+    fieldset {
+      margin: 1rem 0;
+      border: 1px solid #cbd2d9;
+    }
+    label, legend {
+      display: block;
+      margin-top: 0.8rem;
+      font-weight: 600;
+    }
+    input, select {
+      display: block;
+      margin-top: 0.25rem;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.4rem;
+    }
+    fieldset label {
+      font-weight: 400;
+    }
+    fieldset input {
+      display: inline-block;
+      width: auto;
+      margin-right: 0.4rem;
+    }
+    #entry-feedback,
+    #submission-state {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: #f5f7fa;
+      border: 1px solid #cbd2d9;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Clinical EDC UAT Demo Form</h1>
+  <p>Local fixture for fill-only execution. This page does not contact a network.</p>
+  <form id="uat-form" action="#" method="post">
+    <label for="subject-id">Subject ID</label>
+    <input id="subject-id" name="subject_id" type="text" data-label="Subject ID" required>
+
+    <label for="age">Age</label>
+    <input id="age" name="age" type="number" data-label="Age">
+
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender" data-label="Gender">
+      <option value="">Select</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Not Reported">Not Reported</option>
+    </select>
+
+    <fieldset>
+      <legend>Informed Consent</legend>
+      <label for="consent-yes"><input id="consent-yes" name="informed_consent" type="radio" value="Yes" data-label="Informed Consent" required> Yes</label>
+      <label for="consent-no"><input id="consent-no" name="informed_consent" type="radio" value="No" data-label="Informed Consent"> No</label>
+    </fieldset>
+
+    <label for="screening-date">Screening Date</label>
+    <input id="screening-date" name="screening_date" type="date" data-label="Screening Date" required>
+
+    <label for="follow-up-date">Follow-up Date</label>
+    <input id="follow-up-date" name="follow_up_date" type="date" data-label="Follow-up Date">
+
+    <label for="height-cm">Height (cm)</label>
+    <input id="height-cm" name="height_cm" type="number" data-label="Height (cm)">
+
+    <label for="weight-kg">Weight (kg)</label>
+    <input id="weight-kg" name="weight_kg" type="number" data-label="Weight (kg)">
+
+    <div id="entry-feedback" role="status">No values entered.</div>
+    <p id="submission-state">Not submitted</p>
+    <button id="submit-form" type="submit">Submit</button>
+  </form>
+  <script>
+    const form = document.getElementById("uat-form");
+    const feedback = document.getElementById("entry-feedback");
+    const submission = document.getElementById("submission-state");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      submission.textContent = "Submitted";
+    });
+
+    function describe() {
+      const entered = [];
+      const seen = new Set();
+      form.querySelectorAll("input, select").forEach(function (control) {
+        const name = control.getAttribute("data-label") || control.id;
+        const filled = control.type === "radio" ? control.checked : control.value !== "";
+        if (filled && !seen.has(name)) {
+          seen.add(name);
+          entered.push(name);
+        }
+      });
+      feedback.textContent = entered.length
+        ? "Values entered: " + entered.join(", ") + "."
+        : "No values entered.";
+    }
+
+    form.addEventListener("input", describe);
+    form.addEventListener("change", describe);
+    describe();
+  </script>
+</body>
+</html>

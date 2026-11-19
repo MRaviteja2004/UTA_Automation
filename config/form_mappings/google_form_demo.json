@@ -1,0 +1,81 @@
+{
+  "form_name": "Google Clinical EDC UAT Demo Form",
+  "google_form": {
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSe5t_std9cC210P34FUQ88t8w1O7LlHX9qF7lDa_P_WS73YXQ/viewform",
+    "expected_title": "Clinical Study Data Collection - UAT Demo",
+    "questions": {
+      "subject_id": {"entry_id": "235515257"},
+      "age": {"entry_id": "1636364263"},
+      "gender": {
+        "entry_id": "174696818",
+        "choices": ["Male", "Female", "Not Reported"]
+      },
+      "informed_consent": {
+        "entry_id": "165831321",
+        "choices": ["Yes", "No"]
+      },
+      "screening_date": {"entry_id": "2065517174"},
+      "follow_up_date": {"entry_id": "190099262"},
+      "height_cm": {"entry_id": "2022981548"},
+      "weight_kg": {"entry_id": "1719691052"}
+    }
+  },
+  "mappings": [
+    {
+      "source_field": "subject_id",
+      "form_question_title": "Subject ID",
+      "form_question_type": "short_text",
+      "required": true,
+      "enabled": true
+    },
+    {
+      "source_field": "age",
+      "form_question_title": "Age",
+      "form_question_type": "short_text",
+      "required": true,
+      "enabled": true
+    },
+    {
+      "source_field": "gender",
+      "form_question_title": "Gender",
+      "form_question_type": "dropdown",
+      "required": true,
+      "enabled": true
+    },
+    {
+      "source_field": "informed_consent",
+      "form_question_title": "Informed Consent",
+      "form_question_type": "multiple_choice",
+      "required": true,
+      "enabled": true
+    },
+    {
+      "source_field": "screening_date",
+      "form_question_title": "Screening Date",
+      "form_question_type": "date",
+      "required": true,
+      "enabled": true
+    },
+    {
+      "source_field": "follow_up_date",
+      "form_question_title": "Follow-up Date",
+      "form_question_type": "date",
+      "required": false,
+      "enabled": true
+    },
+    {
+      "source_field": "height_cm",
+      "form_question_title": "Height (cm)",
+      "form_question_type": "short_text",
+      "required": false,
+      "enabled": true
+    },
+    {
+      "source_field": "weight_kg",
+      "form_question_title": "Weight (kg)",
+      "form_question_type": "short_text",
+      "required": false,
+      "enabled": true
+    }
+  ]
+}

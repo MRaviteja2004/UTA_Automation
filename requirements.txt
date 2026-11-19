@@ -1,0 +1,8 @@
+streamlit
+pandas
+openpyxl
+pydantic
+python-dotenv
+pytest
+openai
+playwright
